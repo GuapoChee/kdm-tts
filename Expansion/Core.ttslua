@@ -370,6 +370,8 @@ return {
         ["Tempered Axe"] = { speed = 2, accuracy = 6, strength = 6, paired = true },
         ["Plated Shield"] = { speed = 1, accuracy = 8, strength = 3 },
         ["Tempered Dagger"] = { speed = 3, accuracy = 7, strength = 4, paired = true },
+        ["Black Ghost Dagger"] = { speed = 3, accuracy = 7, strength = 2 },
+
 
         ["Rawhide Whip"] = { speed = 3, accuracy = 7, strength = 1 },
 
@@ -439,6 +441,7 @@ return {
             { "The Forest Gate", "Special Hunt Events" },
             { "Herb Gathering", "Special Hunt Events" },
             { "Mineral Gathering", "Special Hunt Events" },
+            { "Underground Labyrinth", "Special Hunt Events" },
 
             { "Misc AI", "AI" },
             { "Battle Pressure", "Hit Locations" },
