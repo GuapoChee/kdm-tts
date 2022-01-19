@@ -357,7 +357,7 @@ function Showdown.Setup(monsterOrName, levelOrName)
         end
     end
 
-    if showdownSetup.survivorStatus2 then
+    if showdownSetup.survivorStatus2 then   --Added because of Regal Worm
         for i = 1, 4 do
             log:Debugf("Spawning survivor %d status %s", i, showdownSetup.survivorStatus2[i])
             specialAiDeck:Take({ name = showdownSetup.survivorStatus2[i], type = "AI", location = "Player "..i.." Status" })
@@ -554,12 +554,24 @@ function Showdown.Setup(monsterOrName, levelOrName)
     -----------------------------------------------------------------------------------------------
     -- monster
 
-    Archive.Take({
-        name = monster.name,
-        type = "Monster Figurine",
-        location = showdownSetup.position or monster.position,
-        rotation = showdownSetup.rotation or monster.rotation,
-    })
+    if showdownSetup.figurines then
+        for _, figurine in ipairs(showdownSetup.figurines) do
+            Archive.Take({
+                archive = monster.name.." Archive",
+                name = figurine.name,
+                type = "Monster Figurine",
+                location = figurine.position, --or monster.position,
+                rotation = figurine.rotation, --or monster.rotation,
+            })
+        end
+    else
+        Archive.Take({
+            name = monster.name,
+            type = "Monster Figurine",
+            location = showdownSetup.position or monster.position,
+            rotation = showdownSetup.rotation or monster.rotation,
+        })
+    end
 
     -- stats
     for _, stat in ipairs({ "movement", "toughness", "speed", "damage", "accuracy", "evasion", "luck" }) do
@@ -695,7 +707,8 @@ function Showdown.OnObjectDrop(_, object)
 
         local size = Showdown.sizesByMonsterName[object.getName()]
         if not size then
-            return log:Debugf("Monster %s has no registered size", object.getName())
+            size = { x = 1, y = 1 }
+            --return log:Debugf("Monster %s has no registered size", object.getName())
         end
 
         object.setPositionSmooth(Showdown.grid:Snap(object, size), false, true)

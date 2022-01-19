@@ -329,6 +329,58 @@ return {
                     name = "Level 1",
                     level = 1,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Harvester Worm",
+                                position = "(10, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm2",
+                                position = "(11, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm3",
+                                position = "(12, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm4",
+                                position = "(13, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm5",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm6",
+                                position = "(13, 9)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm7",
+                                position = "(13, 10)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm8",
+                                position = "(12, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm9",
+                                position = "(11, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm10",
+                                position = "(10, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                        },
                         rules = { "Harvester Worm Rules", 9 },
                         survivorStatus = { "Noise", "Noise", "Noise", "Noise" },
                         basic = 3,
@@ -354,6 +406,58 @@ return {
                     name = "Level 2",
                     level = 2,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Harvester Worm",
+                                position = "(10, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm2",
+                                position = "(11, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm3",
+                                position = "(12, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm4",
+                                position = "(13, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm5",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm6",
+                                position = "(13, 9)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm7",
+                                position = "(13, 10)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm8",
+                                position = "(12, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm9",
+                                position = "(11, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm10",
+                                position = "(10, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                        },
                         rules = { "Harvester Worm Rules", 9 },
                         survivorStatus = { "Noise", "Noise", "Noise", "Noise" },
                         basic = 10,
@@ -382,6 +486,58 @@ return {
                     level = 3,
                     monsterHuntPosition = 11,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Harvester Worm",
+                                position = "(10, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm2",
+                                position = "(11, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm3",
+                                position = "(12, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm4",
+                                position = "(13, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm5",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm6",
+                                position = "(13, 9)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm7",
+                                position = "(13, 10)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm8",
+                                position = "(12, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm9",
+                                position = "(11, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm10",
+                                position = "(10, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                        },
                         rules = { "Harvester Worm Rules", 10 },
                         survivorStatus = { "Noise", "Noise", "Noise", "Noise" },
                         basic = 5,
@@ -433,8 +589,60 @@ return {
                 },
                 {
                     name = "Blood Worm",
-                    level = 4,
+                    level = 3,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Harvester Worm",
+                                position = "(11, 7)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm2",
+                                position = "(11, 8)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm4",
+                                position = "(11, 9)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm14",
+                                position = "(10, 9)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm10",
+                                position = "(10, 8)",
+                                rotation = { x = 0, y = 0, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm11",
+                                position = "(13, 7)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm5",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm15",
+                                position = "(13, 9)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm16",
+                                position = "(12, 9)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm13",
+                                position = "(12, 8)",
+                                rotation = { x = 0, y = 0, z = 0 },
+                            },
+                        },
                         rules = { "Harvester Worm Rules", 12 },
                         survivorStatus = { "Noise", "Noise", "Noise", "Noise" },
                         movement = 10,
@@ -455,14 +663,66 @@ return {
                                 rotations = { { x = 0, y = 180, z = 0 }, { x = 0, y = 180, z = 0 }},
                             },
                         },
-                        playerPositions = { "(11, 8)", "(11, 9)", "(12, 8)", "(12, 9)" },
+                        playerPositions = { "(1, 7)", "(1, 8)", "(1, 9)", "(1, 10)" },
                         playerRotations = {{ x = 0, y = 90, z = 0 }, { x = 0, y = 90, z = 0 }, { x = 0, y = 90, z = 0 },{ x = 0, y = 90, z = 0 } },
                     },
                 },
                 {
                     name = "Dung Worm",
-                    level = 5,
+                    level = 2,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Harvester Worm",
+                                position = "(10, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm2",
+                                position = "(11, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm3",
+                                position = "(12, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm4",
+                                position = "(13, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm5",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm6",
+                                position = "(13, 9)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm7",
+                                position = "(13, 10)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm8",
+                                position = "(12, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm9",
+                                position = "(11, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm10",
+                                position = "(10, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                        },
                         rules = { "Harvester Worm Rules", 12 },
                         survivorStatus = { "Noise", "Noise", "Noise", "Noise" },
                         movement = 14,
@@ -495,8 +755,60 @@ return {
                 },
                 {
                     name = "Regal Worm",
-                    level = 6,
+                    level = 5,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Harvester Worm",
+                                position = "(10, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm2",
+                                position = "(11, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm3",
+                                position = "(12, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm4",
+                                position = "(13, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm5",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm6",
+                                position = "(13, 9)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm7",
+                                position = "(13, 10)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm8",
+                                position = "(12, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm9",
+                                position = "(11, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm10",
+                                position = "(10, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                        },
                         rules = { "Harvester Worm Rules", 12 },
                         survivorStatus = { "Noise", "Noise", "Noise", "Noise" },
                         survivorStatus2 = { "Battle Tempo", "Battle Tempo", "Battle Tempo", "Battle Tempo" },
@@ -559,6 +871,58 @@ return {
                     name = "Homecoming",
                     level = 2,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Harvester Worm",
+                                position = "(10, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm2",
+                                position = "(11, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm3",
+                                position = "(12, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm4",
+                                position = "(13, 7)",
+                                rotation = { x = 0, y = 90, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm5",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm6",
+                                position = "(13, 9)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm7",
+                                position = "(13, 10)",
+                                rotation = { x = 0, y = 180, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm8",
+                                position = "(12, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm9",
+                                position = "(11, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                            {
+                                name = "Harvester Worm10",
+                                position = "(10, 10)",
+                                rotation = { x = 0, y = 270, z = 0 },
+                            },
+                        },
                         rules = { "Harvester Worm Rules", 17 },
                         survivorStatus = { "Noise", "Noise", "Noise", "Noise" },
                         basic = 8,
