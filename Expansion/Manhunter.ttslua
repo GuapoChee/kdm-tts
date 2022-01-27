@@ -109,6 +109,9 @@ return {
                 },
             },
             randomTerrain = 1,
+            injuries = {
+                ["Grimacing Jaw"] = { accuracy = -2, damage = 1 },
+            },
             levels = {
                 {
                     name = "Level 1",

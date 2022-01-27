@@ -20,6 +20,8 @@ Monster.STATS = {
     ["luck"] = true,
 }
 
+Monster.STAT = {"movement", "toughness", "damage", "speed", "accuracy", "evasion", "luck"}
+
 Monster.TOKEN_STATS = {
     ["Movement Token"] = "movement",
     ["Toughness Token"] = "toughness",
@@ -36,12 +38,15 @@ Monster.TOKEN_STATS = {
 function Monster.Init(saveState)
     Monster.boardObject = NamedObject.Get("Showdown Board")
 
+    Monster.statMoods = saveState["statMoods"] or {}
+    Monster.statInjuries = saveState["statInjuries"] or {}
     Monster.stats = {}
-    Monster.tokenStats = {}
+    Monster.modifierStats = {}
     for stat, _ in pairs(Monster.STATS) do
         Monster.stats[stat] = saveState[stat] or 0
-        Monster.tokenStats[stat] = 0
+        Monster.modifierStats[stat] = 0
     end
+
 
     -----------------------------------------------------------------------------------------------
 
@@ -75,6 +80,14 @@ function Monster.Init(saveState)
     ui:ApplyToObject()
 
     -----------------------------------------------------------------------------------------------
+    local monsterTraitMoodsLocation = Location.Get("Trait/Mood")
+    monsterTraitMoodsLocation:AddDropHandler(function(object)
+        Monster.UpdateStats()
+    end)
+
+    monsterTraitMoodsLocation:AddPickUpHandler(function(object)
+        Monster.UpdateStats()
+    end)
 
     local monsterTokensLocation = Location.Get("Monster Tokens")
     monsterTokensLocation:AddDropHandler(function(object)
@@ -101,6 +114,8 @@ end
 
 function Monster.Save()
     local saveState = {}
+    saveState["statMoods"] = Monster.statMoods or {}
+    saveState["statInjuries"] = Monster.statInjuries or {}
     for stat, _ in pairs(Monster.STATS) do
         saveState[stat] = Monster.stats[stat] or 0
     end
@@ -109,9 +124,23 @@ end
 
 ---------------------------------------------------------------------------------------------------
 
+function Monster.SetMoods(moods)
+    assert(Check.TableOrNil(moods))
+    Monster.statMoods = moods or {}
+end
+
+---------------------------------------------------------------------------------------------------
+
+function Monster.SetInjuries(injuries)
+    assert(Check.TableOrNil(injuries))
+    Monster.statInjuries = injuries or {}
+end
+
+---------------------------------------------------------------------------------------------------
+
 function Monster.Stat(stat)
     assert(Check(Monster.STATS[stat]))
-    return Monster.stats[stat] + Monster.tokenStats[stat]
+    return Monster.stats[stat] + Monster.modifierStats[stat]
 end
 
 ---------------------------------------------------------------------------------------------------
@@ -133,28 +162,67 @@ end
 ---------------------------------------------------------------------------------------------------
 
 function Monster.UpdateStats()
-    local tokenStats = {}
+    local modifierStats = {}
+    local tokenStats = Monster.UpdateTokenStats()
+    local cardStats = Monster.UpdateCardStats()
+
+    for stat, value in pairs(tokenStats) do
+        modifierStats[stat] = (modifierStats[stat] or 0) + value
+    end
+    for stat, value in pairs(cardStats) do
+        modifierStats[stat] = (modifierStats[stat] or 0) + value
+    end
+
+    Monster.UpdateModifierStats(modifierStats)
+end
+
+---------------------------------------------------------------------------------------------------
+
+function Monster.UpdateTokenStats()
+    local totals = {}
 
     for _, object in ipairs(Location.Get("Monster Tokens"):AllObjects()) do
         local stat = Monster.TOKEN_STATS[object.getName()]
         if object.getGMNotes() == "Tokens" and stat then
             local value = Util.TokenValue(object)
             log:Debugf("Found token [%s]%s with value %d", object.getGUID(), object.getName(), value)
-            tokenStats[stat] = (tokenStats[stat] or 0) + value
+            totals[stat] = (totals[stat] or 0) + value
             object.registerCollisions()
         end
     end
 
-    Monster.UpdateTokenStats(tokenStats)
+    return totals
 end
 
 ---------------------------------------------------------------------------------------------------
 
-function Monster.UpdateTokenStats(tokenStats)
+function Monster.UpdateCardStats()
+    local totals = {}
+
+    for _, object in ipairs(Location.Get("Trait/Mood"):AllObjects()) do
+        local cardType = object.getGMNotes()
+        local cardName = object.getName()
+        if cardType == "Hit Locations" and Monster.statInjuries[cardName] then
+            for stat, changeValue in pairs(Monster.statInjuries[cardName]) do
+                totals[stat] = (totals[stat] or 0) + changeValue
+            end
+        elseif cardType == "AI" and Monster.statMoods[cardName] then
+            for stat, changeValue in pairs(Monster.statMoods[cardName]) do
+                totals[stat] = (totals[stat] or 0) + changeValue
+            end
+        end
+    end
+
+    return totals
+end
+
+---------------------------------------------------------------------------------------------------
+
+function Monster.UpdateModifierStats(modifierStats)
     for stat, _ in pairs(Monster.STATS) do
-        local tokenStat = tokenStats[stat] or 0
-        if Monster.tokenStats[stat] != tokenStat then
-            Monster.tokenStats[stat] = tokenStat
+        local modifierStat = modifierStats[stat] or 0
+        if Monster.modifierStats[stat] != modifierStat then
+            Monster.modifierStats[stat] = modifierStat
             local newValue = Monster.Stat(stat)
             log:Debugf("Updating monster stat %s to %d", stat, newValue)
             Monster.statCounters[stat]:SetText(newValue)
@@ -178,9 +246,10 @@ function Monster.OnObjectCollisionEnter(object, collisionInfo)
     log:Debugf("[%s]%s collided with [%s]%s", object.getGUID(), object.getName(), collisionObject.getGUID(), collisionObject.getName())
 
     local monsterTokensLocation = Location.Get("Monster Tokens")
+    local traitMoodLocation = Location.Get("Trait/Mood")
     for _, location in ipairs(Location.ObjectLocations(object)) do
-        if location == monsterTokensLocation then
-            log:Debugf("Token [%s]%s found in %s, updating stats", object.getGUID(), object.getName(), location)
+        if location == monsterTokensLocation or location == traitMoodLocation then
+            log:Debugf("Token or card [%s]%s found in %s, updating stats", object.getGUID(), object.getName(), location)
             Monster.UpdateStats()
         end
     end
@@ -189,15 +258,17 @@ end
 ---------------------------------------------------------------------------------------------------
 
 return {
-    Init      = Monster.Init,
-    PostInit  = Monster.PostInit,
-    Save      = Monster.Save,
-    Movement  = function() return Monster.Stat("movement") end,
-    Toughness = function() return Monster.Stat("toughness") end,
-    Damage    = function() return Monster.Stat("damage") end,
-    Speed     = function() return Monster.Stat("speed") end,
-    Accuracy  = function() return Monster.Stat("accuracy") end,
-    Evasion   = function() return Monster.Stat("evasion") end,
-    Luck      = function() return Monster.Stat("luck") end,
-    SetStat   = Monster.SetStat,
+    Init        = Monster.Init,
+    PostInit    = Monster.PostInit,
+    Save        = Monster.Save,
+    Movement    = function() return Monster.Stat("movement") end,
+    Toughness   = function() return Monster.Stat("toughness") end,
+    Damage      = function() return Monster.Stat("damage") end,
+    Speed       = function() return Monster.Stat("speed") end,
+    Accuracy    = function() return Monster.Stat("accuracy") end,
+    Evasion     = function() return Monster.Stat("evasion") end,
+    Luck        = function() return Monster.Stat("luck") end,
+    SetStat     = Monster.SetStat,
+    SetMoods    = Monster.SetMoods,
+    SetInjuries = Monster.SetInjuries,
 }

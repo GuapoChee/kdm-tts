@@ -135,6 +135,10 @@ return {
                     rotations = { { x = 0, y = 180, z = 0 }, { x = 0, y = 180, z = 0 }, { x = 0, y = 180, z = 0 }, { x = 0, y = 180, z = 0 } },
                 },
             },
+            moods = {
+                ["Challenge"]  = { toughness = 4 },  
+                ["Cudgel"] = { damage = 2 }, 
+            },
             levels = {
                 {
                     name = "Level 1",

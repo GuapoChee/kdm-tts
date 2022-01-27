@@ -308,6 +308,12 @@ return {
                     rotations = { { x = 0, y = -90, z = 0 }, { x = 0, y = 180, z = 0 }, { x = 0, y = 90, z = 0 } },
                 },
             },
+            --[[moods = {
+                ["Glowing Fist"] = { damage = 1 },  --gains +1 Damage for each -1 toughness Token
+            },]]
+            injuries = {
+                ["The King's Mouth"] = { damage = -1 } 
+            },
             levels = {
                 {
                     name = "Level 1",

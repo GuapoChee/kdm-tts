@@ -190,6 +190,10 @@ return {
                         randomTerrain = 2,
                     },
                 },
+                injuries = {
+                    ["Tricky Forelegs"] =  { movement = -1 },
+                    ["Cunning Forelegs"] = { movement = -1 },
+                },
                 {
                     name = "Level 2",
                     level = 2,

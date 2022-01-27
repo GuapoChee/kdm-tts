@@ -99,6 +99,9 @@ return {
                 },
             },
             miscObject = { name = "Lonely Fruit", type = "Terrain Tiles" },
+            moods = {
+                ["Grass Whistle"]  = { evasion = 1 },  --Need to create system to make it add an aditional evasion token at level 3+
+            },
             levels = {
                 {
                     name = "Level 1",

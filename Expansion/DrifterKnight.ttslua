@@ -142,6 +142,9 @@ return {
             },
             unfixedTerrain = { "Dead Coral", "Tidal Pool" },
             randomTerrain = 2,
+            injuries = {
+                ["Grotesque Hand"] = { accuracy = -1 } 
+            },
             levels = {
                 {
                     name = "Level 1",

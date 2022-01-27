@@ -156,6 +156,15 @@ return {
                     rotations = { { x = 0, y = 180, z = 0 } },
                 },
             },
+            moods = {
+                ["Sword Master"] = { speed = 1 },
+                ["Beetle Flight"] = { evasion = 1, movement = 10 }    
+            },
+            injuries = {
+                ["Filthy Face"] = { accuracy = -1 },
+                ["Filthy Wings"] = { toughness = -1 },
+                ["Filthy Resin Sword"] = { damage = -1 },   
+            },
             levels = {
                 {
                     name = "Level 1",
@@ -197,7 +206,7 @@ return {
                         advanced = 9,
                         legendary = 2,
                         starting = {
-                            special = { "Baller", "Power Forward", "Separation Anxiety", "Prepared Tunnels", "Burrow" },
+                            special = { "Baller", "Power Forward", "Separation Anxiety", "Prepared Tunnels", "Burrow", "Heavy Load" },
                         },
                         movement = 8,
                         toughness = 18,
@@ -216,7 +225,7 @@ return {
                         customAdvanced = { "Resin Sword Slash" },
                         starting = {
                             legendary = { "Sword Master" },
-                            special = { "Baller", "Power Forward", "Separation Anxiety", "Prepared Tunnels" },
+                            special = { "Baller", "Power Forward", "Separation Anxiety", "Prepared Tunnels", "Heavy Load" },
                             misc = { "Berserker" },
                         },
                         life = 25,

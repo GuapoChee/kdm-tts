@@ -354,6 +354,7 @@ return {
         ["Sword of Silence"] = { speed = 2, accuracy = 5, strength = 6 },
         ["Twilight Revolver"] = { speed = 1, accuracy = 6, strength = 10 },
         ["Xmaxe"] = { speed = 2, accuracy = 5, strength = 0 },
+        ["Scoopy Club"] = { speed = 1, accuracy = 4, strength = 5 },
 
         ["Adventure Sword"] = { speed = 3, accuracy = 6, strength = 0 },
         ["Butcher Cleaver"] = { speed = 2, accuracy = 5, strength = 5, paired = true },
@@ -886,6 +887,9 @@ return {
                 },
             },
             randomTerrain = 1,
+            moods = {
+                ["Lantern Frenzy"] = { speed = 1, movement = 2 }
+            },
             levels = {
                 {
                     name = "Level 1",
@@ -1056,6 +1060,14 @@ return {
                 },
             },
             randomTerrain = 2,
+            moods = {
+                ["Life Pattern"] = { toughness = 4 },
+                ["Bored"] = { toughness = -2 },
+                ["Rancid Melon Stench"] = { speed = 1 },
+            },
+            injuries = {
+                ["Glorious Soft Belly"] = { accuracy = -2 } --Actually Glorious Primary Eyes, Archive Hit Locations have to be looked through and renamed
+            },
             levels = {
                 {
                     name = "Level 1",
@@ -1172,6 +1184,15 @@ return {
                 },
             },
             randomTerrain = 2,
+            moods = {
+                ["In Heat"] = { damage = 1 },
+                ["Infested"] = { toughness = 1 },
+                ["Legendary Horns"] = { toughness = 4, speed = 1 },
+            },
+            injuries = {
+                ["Palate"] = { speed = -1 },
+                ["Restless Flank"] = { evasion = -1 }, --Is actually restless eye, fix later
+            },
             levels = {
                 {
                     name = "Level 1",
@@ -1369,6 +1390,14 @@ return {
             playerPositions = { "(10, 14)", "(11, 15)", "(12, 15)", "(13, 15)" },
             unfixedTerrain = { "2 Tall Grass" },
             randomTerrain = 2,
+            moods = {
+                ["Golden Eyes"] = { speed = 1, accuracy = 2 },
+                ["Enraged"] = { damage = "*" }                  
+            },
+            injuries = {
+                ["Beast's Paw"] = { movement = -1 },
+                ["Fuzzy Groin"] = { damage = 1 },
+            },
             levels = {
                 {
                     name = "Level 2",
@@ -1397,6 +1426,7 @@ return {
                         customAdvanced = { "Smart Cat" },
                         advanced = 8,
                         legendary = 1,
+                        removeHitLocations = { "Beast's Paw", "Strange Hand", "Straining Neck" },
                         starting = {
                             legendary = { "Golden Eyes" },
                             special = { "Vicious", "Giga Claws", "Merciless" },
@@ -1427,6 +1457,14 @@ return {
                 },
             },
             randomTerrain = 2,
+            moods = {
+                ["Golden Eyes"] = { speed = 1, accuracy = 2 },
+                ["Enraged"] = { damage = "*" },
+            },
+            injuries = {
+                ["Beast's Paw"] = { movement = -1 },
+                ["Fuzzy Groin"] = { damage = 1 },
+            },
             levels = {
                 {
                     name = "Prologue",
@@ -1478,6 +1516,7 @@ return {
                         basic = 10,
                         advanced = 9,
                         legendary = 2,
+                        removeHitLocations = { "Beast's Paw", "Strange Hand", "Straining Neck" },
                         starting = {
                             special = { "Cunning", "Merciless" },
                             misc = { "Indomitable" },
@@ -1518,6 +1557,7 @@ return {
                         customBasic = { "Combo Claw", "Vicious Claw", "Power Swat" },
                         customAdvanced = { "Terrifying Roar", "Bloody Claw" },
                         customLegendary = { "Vanish" },
+                        removeHitLocations = { "Beast's Paw", "Strange Hand", "Straining Neck" },
                         starting = {
                             special = { "Cunning", "Merciless" },
                             misc = { "Indomitable", "Golden Eyes", "Trample", "Top of the Food Chain" },

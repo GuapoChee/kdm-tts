@@ -150,6 +150,9 @@ return {
                     rotation = { x = 0, y = 180, z = 0 },
                 },
             },
+            moods = {
+                ["Upstage"]  = { speed = 1, damage = 1 },  
+            },
             levels = {
                 {
                     name = "Level 1",

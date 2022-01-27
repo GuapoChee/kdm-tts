@@ -52,6 +52,10 @@ return {
             { "Forsaker Sisters Basic AI", "AI" },
             { "Forsaker Sisters Advanced AI", "AI" },
             { "Forsaker Sisters Legendary AI", "AI" },
+
+            { "Forsaker Sisters Basic AI Two", "AI"},
+            { "Forsaker Sisters Advanced AI Two", "AI"},
+            { "Forsaker Sisters Legendary AI Two", "AI"},
         }
     },
 
@@ -88,6 +92,7 @@ return {
     monsters = {
         {
             name = "Forsaker Sisters",
+            twoAiDecks = true,
             nemesis = true,
             size = { x = 1, y = 1 },
             rules = { "Forsaker Sisters Rules", 3 },
@@ -107,17 +112,35 @@ return {
                     rotations = { { x = 0, y = 180, z = 0 }, { x = 0, y = 180, z = 0 }},
                 },
             },
+            moods = {
+                ["Slippery Dance"]  = { luck = 1, evasion = 1 },  
+                ["Lethargic Dance"] = { movement = -1 }, 
+            },
             levels = {
                 {
                     name = "Level 1",
                     level = 1,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Forsaker Sisters",
+                                position = "(10, 8)",
+                                rotation = { x = 0, y = 90, z = 0},
+                            },
+                            {
+                                name = "Forsaker Sisters",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 90, z = 0},
+                            }
+                        },
                         basic = 5,
+                        basic2 = 5,
                         advanced = 4,
+                        advanced2 = 4,
                         movement = 7,
                         toughness = 10,
                         starting = {
-                            special = {"Blood Relative", "Dreaded Trophies", "Revenge", "No Mercy For The Weak"}
+                            special = { "Grace Basic Action","Blood Relative", "Dreaded Trophies", "Revenge", "No Mercy For The Weak"}
                         }
 
                     },
@@ -126,9 +149,24 @@ return {
                     name = "Level 2",
                     level = 2,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Forsaker Sisters",
+                                position = "(10, 8)",
+                                rotation = { x = 0, y = 90, z = 0},
+                            },
+                            {
+                                name = "Forsaker Sisters",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 90, z = 0},
+                            }
+                        },
                         basic = 5,
+                        basic2 = 5,
                         advanced = 4,
+                        advanced2 = 4,
                         legendary = 1,
+                        legendary2 = 1,
                         movement = 7,
                         toughness = 14,
                         speed = 1,
@@ -136,7 +174,7 @@ return {
                         accuracy = 1,
                         evasion = 1,
                         starting = {
-                            special = {"Blood Relative", "Dreaded Trophies", "Revenge", "No Mercy For The Weak", "Love Scorned"}
+                            special = { "Grace Basic Action","Blood Relative", "Dreaded Trophies", "Revenge", "No Mercy For The Weak", "Love Scorned"}
                         }
 
                     },
@@ -145,10 +183,25 @@ return {
                     name = "Level 3",
                     level = 3,
                     showdown = {
+                        figurines = {
+                            {
+                                name = "Forsaker Sisters",
+                                position = "(10, 8)",
+                                rotation = { x = 0, y = 90, z = 0},
+                            },
+                            {
+                                name = "Forsaker Sisters",
+                                position = "(13, 8)",
+                                rotation = { x = 0, y = 90, z = 0},
+                            }
+                        },
                         survivorStatus = { "Infectious Lunacy", "Infectious Lunacy", "Infectious Lunacy", "Infectious Lunacy" },
                         basic = 7,
+                        basic2 = 7,
                         advanced = 4,
+                        advanced2 = 4,
                         legendary = 2,
+                        legendary2 = 2,
                         movement = 9,
                         toughness = 17,
                         speed = 2,
@@ -156,7 +209,7 @@ return {
                         accuracy = 2,
                         evasion = 2,
                         starting = {
-                            special = {"Blood Relative", "Dreaded Trophies", "Revenge", "No Mercy For The Weak", "Love Scorned" },
+                            special = { "Grace Basic Action","Blood Relative", "Dreaded Trophies", "Revenge", "No Mercy For The Weak", "Love Scorned"},
                             misc = { "Indomitable" },
                         }
 
@@ -165,5 +218,5 @@ return {
             },
         },
     },
-    --Pull out patern cards from this archive and create archive chest for all Pattern Gear Cards
+    
 }

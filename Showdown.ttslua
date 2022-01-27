@@ -42,15 +42,17 @@ function Showdown.InitExpansions()
     Showdown.sizesByMonsterName = {}
     Showdown.levelsByMonsterLevelName = {}
     Showdown.minionsByName = {}
-
     for _, expansion in ipairs(Expansion.All()) do
         for _, monster in ipairs(expansion.monsters or {}) do
             if monster.resourcesDeck == nil then monster.resourcesDeck = monster.name.." Resources" end
             if monster.info == nil then monster.info = monster.name.." Info" end
             if monster.basicAction == nil then monster.basicAction = monster.name.." Basic Action" end
             if monster.basicAiDeck == nil then monster.basicAiDeck = monster.name.." Basic AI" end
+            if monster.basicAiDeck2 == nil then monster.basicAiDeck2 = monster.name.." Basic AI Two" end --Second AI Deck
             if monster.advancedAiDeck == nil then monster.advancedAiDeck = monster.name.." Advanced AI" end
+            if monster.advancedAiDeck2 == nil then monster.advancedAiDeck2 = monster.name.." Advanced AI Two" end  --Second AI Deck
             if monster.legendaryAiDeck == nil then monster.legendaryAiDeck = monster.name.." Legendary AI" end
+            if monster.legendaryAiDeck2 == nil then monster.legendaryAiDeck2 = monster.name.." Legendary AI Two" end  --Second AI Deck
             if monster.specialAiDeck == nil then monster.specialAiDeck = monster.name.." Special AI" end
             if monster.hitLocationsDeck == nil then monster.hitLocationsDeck = monster.name.." Hit Locations" end
             monster.expansion = expansion
@@ -226,7 +228,10 @@ function Showdown.Setup(monsterOrName, levelOrName)
     else
         monster = monsterOrName
     end
-
+--[[
+    Monster.SetMoods(monster.moods or {})
+    Monster.SetInjuries(monster.injuries or {})
+]]--
     local level = nil
     if type(levelOrName) == "string" then
         level = Showdown.levelsByMonsterLevelName[monster.name..levelOrName]
@@ -234,6 +239,13 @@ function Showdown.Setup(monsterOrName, levelOrName)
     else
         level = levelOrName
     end
+
+
+    --Assign monster's stat-altering Moods & Persistent Injuries
+--    local replacedMoods = Util.ReplaceStarWithLevel(monster.moods, level) or {}
+    Monster.SetMoods(Showdown.ReplaceStarWithLevel(monster.moods, level.level) or {})
+--    local replacedInjuries = Util.ReplaceStarWithLevel(monster.injuries, level) or {}
+    Monster.SetInjuries(Showdown.ReplaceStarWithLevel(monster.injuries, level.level) or {})
 
     local showdownSetup = level.showdown
     assert(Check(showdownSetup, "No showdown setup for %s, %s", monster.name, level.name))
@@ -294,6 +306,7 @@ function Showdown.Setup(monsterOrName, levelOrName)
     local basicAiDeck = Container(Archive.Take({ name = monster.basicAiDeck, type = "AI", location = "Unused Basic AI", rotation = { x = 0, y = 180, z = 180 } }))
     basicAiDeck:Shuffle()
 
+
     local advancedAiDeck
     if monster.advancedAiDeck then
         advancedAiDeck = Container(Archive.Take({ name = monster.advancedAiDeck, type = "AI", location = "Unused Advanced AI", rotation = { x = 0, y = 180, z = 180 } }))
@@ -306,9 +319,28 @@ function Showdown.Setup(monsterOrName, levelOrName)
         legendaryAiDeck:Shuffle()
     end
 
+
     local specialAiDeck = Container(Archive.Take({ name = monster.specialAiDeck, type = "AI", location = "Unused Special AI", rotation = { x = 0, y = 180, z = 180 } }))
 
     local miscAiDeck = Container(Archive.Take({ name = "Misc AI", type = "AI", location = "Unused Misc AI", rotation = { x = 0, y = 180, z = 180 } }))
+
+
+    local basicAiDeck2
+    local advancedAiDeck2
+    local legendaryAiDeck2
+    if monster.twoAiDecks then
+        basicAiDeck2 = Container(Archive.Take({ name = monster.basicAiDeck2, type = "AI", location = "Unused Basic AI 2", rotation = { x = 0, y = 180, z = 180 } })) --Second AI Deck
+        basicAiDeck2:Shuffle()
+
+        if monster.advancedAiDeck2 then
+            advancedAiDeck2 = Container(Archive.Take({ name = monster.advancedAiDeck2, type = "AI", location = "Unused Advanced AI 2", rotation = { x = 0, y = 180, z = 180 } })) --Second Ai Deck
+            advancedAiDeck2:Shuffle()
+        end
+        if monster.legendaryAiDeck2 then
+            legendaryAiDeck2 = Container(Archive.Take({ name = monster.legendaryAiDeck2, type = "AI", location = "Unused Legendary AI 2", rotation = { x = 0, y = 180, z = 180 } })) --Second Ai Deck
+            legendaryAiDeck2:Shuffle()
+        end
+    end
 
     local nextStartingLocation = 1
     local function NextStartingLocation()
@@ -347,6 +379,18 @@ function Showdown.Setup(monsterOrName, levelOrName)
         if showdownSetup.life then
             miscAiDeck:Take({ name = "Life", type = "AI", location = "Wound Stack" })
         end
+
+        if monster.twoAiDecks then
+            for _, card in ipairs(showdownSetup.starting.basic2 or {}) do
+                AddStartingCard(card, basicAiDeck2)
+            end
+            for _, card in ipairs(showdownSetup.starting.advanced2 or {}) do
+                AddStartingCard(card, advancedAiDeck2)
+            end
+            for _, card in ipairs(showdownSetup.starting.legendary2 or {}) do
+                AddStartingCard(card, legendaryAiDeck2)
+            end
+        end
     end
 
     -- survivor statuses
@@ -366,6 +410,7 @@ function Showdown.Setup(monsterOrName, levelOrName)
 
     -- build AI deck
     local sources = {}
+    local sources2 = {}
     for _, card in ipairs(showdownSetup.customBasic or {}) do
         table.insert(sources, Archive.ContainerSource(basicAiDeck, card, "AI" ))
     end
@@ -390,6 +435,32 @@ function Showdown.Setup(monsterOrName, levelOrName)
     for i = 1, (showdownSetup.legendary or 0) do
         table.insert(sources, Archive.ContainerSource(legendaryAiDeck))
     end
+
+    local aiDeck2
+    if monster.twoAiDecks then
+        for _, card in ipairs(showdownSetup.customBasic2 or {}) do                      --Second AI Deck
+            table.insert(sources2, Archive.ContainerSource(basicAiDeck2, card, "AI" )) 
+        end
+        for _, card in ipairs(showdownSetup.customAdvanced2 or {}) do                    --Second AI Deck
+            table.insert(sources2, Archive.ContainerSource(advancedAiDeck2, card, "AI" )) 
+        end
+        for _, card in ipairs(showdownSetup.customLegendary2 or {}) do                    --Second AI Deck
+            table.insert(sources2, Archive.ContainerSource(legendaryAiDeck2, card, "AI" ))
+        end
+        for i = 1, (showdownSetup.basic2 or 0) do                       --Second AI Deck
+            table.insert(sources2, Archive.ContainerSource(basicAiDeck2))
+        end
+        for i = 1, (showdownSetup.advanced2 or 0) do                       --Second AI Deck                 
+            table.insert(sources2, Archive.ContainerSource(advancedAiDeck2))
+        end
+        for i = 1, (showdownSetup.legendary2 or 0) do                       --Second AI Deck
+            table.insert(sources2, Archive.ContainerSource(legendaryAiDeck2))
+        end
+
+        aiDeck2 = Archive.CreateDeckFromSources({ sources = sources2, location = "AI 2", name = monster.name.." AI Two", type = "AI", rotation = { x = 0, y = 180, z = 180 } }) --Second AI Deck
+        aiDeck2:Shuffle()
+    end
+
     local aiDeck = Archive.CreateDeckFromSources({ sources = sources, location = "AI", name = monster.name.." AI", type = "AI", rotation = { x = 0, y = 180, z = 180 } })
     aiDeck:Shuffle()
 
@@ -636,6 +707,9 @@ function Showdown.Clean()
 
     Showdown.CleanInternal()
 
+    Monster.SetMoods({})
+    Monster.SetInjuries({})
+
     for _, stat in ipairs({ "movement", "toughness", "speed", "damage", "accuracy", "evasion", "luck" }) do
         Monster.SetStat(stat, 0)
     end
@@ -736,6 +810,25 @@ function Showdown.OnObjectDrop(_, object)
 
         object.setPositionSmooth(Showdown.grid:Snap(object, size), false, true)
     end
+end
+
+---------------------------------------------------------------------------------------------------
+
+function Showdown.ReplaceStarWithLevel(cards, level)
+    assert(Check.Num(level))
+    local copy = {}
+    for k, v in pairs(cards) do
+        local innerCopy = {}
+        for ik, iv in pairs(v) do
+            if (not Check.Num(iv)) then
+                innerCopy[ik] = level or 0
+            else
+                innerCopy[ik] = iv or 0
+            end
+        end
+        copy[k] = innerCopy
+    end
+    return copy
 end
 
 ---------------------------------------------------------------------------------------------------

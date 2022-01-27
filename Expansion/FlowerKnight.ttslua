@@ -136,6 +136,9 @@ return {
             },
             unfixedTerrain = { "Flower Patches" },
             randomTerrain = 1,
+            moods = {
+                ["Cocoon"] = { toughness = 3 },  
+            },
             levels = {
                 {
                     name = "Level 1",

@@ -127,6 +127,7 @@ return {
             { "Allison Info", "AI" },
             { "Allison Basic Action", "AI" },
             { "Allison Basic AI", "AI" },
+            { "Allison Basic AI Two", "AI" },
             { "Allison Advanced AI", "AI" },
             { "Allison Legendary AI", "AI" },
             { "Allison", "Monster Figurine" },
@@ -150,9 +151,12 @@ return {
         {
             name = "Allison",
             nemesis = true,
+            twoAiDecks = true,
             size = { x = 2, y = 2 },
             rules = { "Allison The Twilight Knight Rules", 4 },
             resourcesDeck = false,
+            legendaryAiDeck2 = false,
+            advancedAiDeck2 = false,
             position = "(11.5, 8.5)",
             playerPositions = { "(10, 16)", "(11, 16)", "(12, 16)", "(13, 16)" },
             playerRotations = { { x = 0, y = 0, z = 0 }, { x = 0, y = 0, z = 0 }, { x = 0, y = 0, z = 0 }, { x = 0, y = 0, z = 0 } },
@@ -168,17 +172,25 @@ return {
                     rotations = { { x = 0, y = 180, z = 0 } },
                 },
             },
+            moods = {
+                ["Survival Instinct"] = { toughness = 2, damage = 1 },
+            },
+            injuries = {
+                ["Exposed Flesh"] = { evasion = -1 } 
+            },
             levels = {
                 {
                     name = "Level 1",
                     level = 1,
                     showdown = {
                         basic = 8,
+                        basic2 = 20,
                         advanced = 4,
+                        removeHitLocations = { "Void Nerve Hood", "Hydrostatic Skeletal Plate", "High Voltage Lanterns", "Ganglial Lantern Robe" },
                         movement = 6,
                         toughness = 10,
                         starting = {
-                            special = { "Will to Survive", "Deadly Invitation", "Out of Your League", "Armored Veteran" }
+                            special = { "Deadly Invitation", "Out of Your League", "Armored Veteran", "Will to Survive", "Twilight Dash", "Twilight Taunt", "Twilight Surge", "Twilight Dodge" }
                         }
 
                     },
@@ -188,7 +200,9 @@ return {
                     level = 2,
                     showdown = {
                         basic = 8,
+                        basic2 = 20,
                         advanced = 5,
+                        removeHitLocations = { "Void Nerve Hood", "Hydrostatic Skeletal Plate", "High Voltage Lanterns", "Ganglial Lantern Robe" },
                         legendary = 1,
                         movement = 8,
                         toughness = 12,
@@ -196,7 +210,7 @@ return {
                         damage = 1,
                         accuracy = 1,
                         starting = {
-                            special = { "Will to Survive", "Deadly Invitation", "Out of Your League", "Armored Veteran" }
+                            special = { "Deadly Invitation", "Out of Your League", "Armored Veteran", "Will to Survive", "Twilight Dash", "Twilight Taunt", "Twilight Surge", "Twilight Dodge" }
                         }
 
                     },
@@ -206,6 +220,7 @@ return {
                     level = 3,
                     showdown = {
                         basic = 9,
+                        basic2 = 20,
                         advanced = 6,
                         legendary = 2,
                         movement = 9,
@@ -215,7 +230,7 @@ return {
                         accuracy = 2,
                         luck = 1,
                         starting = {
-                            special = { "Will to Survive", "Deadly Invitation", "Out of Your League", "Armored Veteran" },
+                            special = { "Deadly Invitation", "Out of Your League", "Armored Veteran", "Will to Survive", "Twilight Dash", "Twilight Taunt", "Twilight Surge", "Twilight Dodge" },
                             misc = { "Indomitable" },
                         }
 
@@ -226,6 +241,7 @@ return {
                     level = 4,
                     showdown = {
                         basic = 10,
+                        basic2 = 20,
                         advanced = 8,
                         legendary = 2,
                         movement = 9,
@@ -235,7 +251,7 @@ return {
                         accuracy = 3,
                         luck = 2,
                         starting = {
-                            special = { "Will to Survive", "Deadly Invitation", "Out of Your League", "Armored Veteran", "Twilight of Nothingness" },
+                            special = { "Deadly Invitation", "Out of Your League", "Armored Veteran", "Will to Survive", "Twilight Dash", "Twilight Taunt", "Twilight Surge", "Twilight Dodge", "Twilight of Nothingness" },
                             misc = { "Indomitable" },
                         }
                     },

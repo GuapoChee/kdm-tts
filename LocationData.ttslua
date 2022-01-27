@@ -272,139 +272,189 @@ local locationData = {
         size = CARD_SIZE,
         board = "Showdown Board",
     },
-    -- traits/moods aren't listed in top-down, left-to-right
-    ["Trait/Mood 1"] = {
-        center = { x = -7.280050, y = 10.741001, z = 0.415547 },
-        size = CARD_SIZE,
+    -- traits/moods are listed in bottom-up, left-to-right (First Trait spawns to the right of Info)
+    ["Trait/Mood"] = {
+        p1 = { x = -7, y = 10.751001, z = -3.5 }, --Top Left
+        p2 = { x = -10, y = 10.741003, z = 0.8 },  --Bottom Right
         board = "Showdown Board",
     },
-    ["Trait/Mood 2"] = {
-        center = { x = -7.280050, y = 10.741002, z = -0.812282 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 3"] = {
-        center = { x = -7.280050, y = 10.741000, z = -2.040111 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 4"] = {
-        center = { x = -8.116979, y = 10.741001, z = 0.415547 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 5"] = {
-        center = { x = -8.116979, y = 10.741001, z = -0.812282 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 6"] = {
-        center = { x = -8.116979, y = 10.741000, z = -2.040111 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 7"] = {
-        center = { x = -8.953908, y = 10.741001, z = 1.643376 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 8"] = {
-        center = { x = -8.953908, y = 10.741002, z = 0.415547 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 9"] = {
-        center = { x = -8.953908, y = 10.741001, z = -0.812282 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 10"] = {
-        center = { x = -8.953908, y = 10.741001, z = -2.040111 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 11"] = {
-        center = { x = -9.790837, y = 10.741000, z = 1.643376 },
-        size = CARD_SIZE,
-        board = "Showdown Board",
-    },
-    ["Trait/Mood 12"] = {
-        center = { x = -9.790837, y = 10.741002, z = 0.415547 },
+    ["Trait/Mood 14"] = {
+        center = { x = -9.68, y = 10.741001, z = -3.13 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Trait/Mood 13"] = {
-        center = { x = -9.790837, y = 10.741003, z = -0.812282 },
+        center = { x = -8.849, y = 10.741002, z = -3.13 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
-    ["Trait/Mood 14"] = {
-        center = { x = -9.790837, y = 10.741002, z = -2.040111 },
+    ["Trait/Mood 12"] = {
+        center = { x = -8, y = 10.741000, z = -3.13 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
-    ["Basic Action"] = {
-        center = { x = -7.280050, y = 10.741002, z = 1.643376 },
+    ["Trait/Mood 11"] = {
+        center = { x = -7.175, y = 10.741001, z = -3.13 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 10"] = {
+        center = { x = -9.68, y = 10.741001, z = -1.95 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 9"] = {
+        center = { x = -8.849, y = 10.741000, z = -1.95 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 8"] = {
+        center = { x = -8, y = 10.741001, z = -1.95 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 7"] = {
+        center = { x = -7.175, y = 10.741002, z = -1.95 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 6"] = {
+        center = { x = -9.68, y = 10.741001, z = -0.77 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 5"] = {
+        center = { x = -8.849, y = 10.741001, z = -0.77 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 4"] = {
+        center = { x = -8, y = 10.741000, z = -0.77 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 3"] = {
+        center = { x = -7.175, y = 10.741002, z = -0.77 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 2"] = {
+        center = { x = -9.68, y = 10.741003, z = 0.41 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Trait/Mood 1"] = {
+        center = { x = -8.849, y = 10.741002, z = 0.41 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Monster Info"] = {
-        center = { x = -8.116979, y = 10.741001, z = 1.643376 },
+        center = { x = -8, y = 10.741001, z = 0.41 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Basic Action"] = {
+        center = { x = -7.175, y = 10.741002, z = 0.41 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["AI"] = {
-        center = { x = -7.458938, y = 10.741000, z = 3.058557 },
+        center = { x = -7.35, y = 10.741000, z = 3.95 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["AI Discard"] = {
-        center = { x = -8.625810, y = 10.741002, z = 3.058557 },
+        center = { x = -8.51, y = 10.741002, z = 3.95 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Wound Stack"] = {
-        center = { x = -9.786024, y = 10.741003, z = 3.058821 },
+        center = { x = -9.68, y = 10.741003, z = 3.95 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["AI 2"] = {
+        center = { x = -7.35, y = 10.741000, z = 1.59 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["AI Discard 2"] = {
+        center = { x = -8.51, y = 10.741002, z = 1.59 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Wound Stack 2"] = {
+        center = { x = -9.68, y = 10.741003, z = 1.59 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["HL"] = {
-        center = { x = -7.458938, y = 10.741002, z = 4.473865 },
+        center = { x = -7.35, y = 10.741002, z = 5.13 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["HL Discard"] = {
-        center = { x = -8.625810, y = 10.741003, z = 4.473865 },
+        center = { x = -8.51, y = 10.741003, z = 5.13 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Unused HL"] = {
-        center = { x = -9.786024, y = 10.741003, z = 4.475617 },
+        center = { x = -9.68, y = 10.741003, z = 5.13 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["HL 2"] = {
+        center = { x = -7.35, y = 10.741002, z = 2.77 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["HL Discard 2"] = {
+        center = { x = -8.51, y = 10.741003, z = 2.77 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Unused HL 2"] = {
+        center = { x = -9.68, y = 10.741003, z = 2.77 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Unused Basic AI 2"] = {
+        center = { x = -10.87, y = 10.741000, z = -3.13 },
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Unused Advanced AI 2"] = {
+        center = { x = -10.87, y = 10.741002, z = -1.95 }, --1.18 difference
+        size = CARD_SIZE,
+        board = "Showdown Board",
+    },
+    ["Unused Legendary AI 2"] = {
+        center = { x = -10.87, y = 10.741002, z = -0.77 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Unused Basic AI"] = {
-        center = { x = -10.986748, y = 10.741000, z = -2.038309 },
+        center = { x = -10.87, y = 10.741000, z = 0.41 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Unused Advanced AI"] = {
-        center = { x = -10.986748, y = 10.741002, z = -0.410267 },
+        center = { x = -10.87, y = 10.741002, z = 1.59 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Unused Legendary AI"] = {
-        center = { x = -10.986748, y = 10.741002, z = 1.217774 },
+        center = { x = -10.87, y = 10.741002, z = 2.77 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Unused Special AI"] = {
-        center = { x = -10.986748, y = 10.741003, z = 2.845815 },
+        center = { x = -10.87, y = 10.741003, z = 3.95 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
     ["Unused Misc AI"] = {
-        center = { x = -10.986748, y = 10.741002, z = 4.473855 },
+        center = { x = -10.87, y = 10.741002, z = 5.13 },
         size = CARD_SIZE,
         board = "Showdown Board",
     },
