@@ -243,9 +243,9 @@ function Showdown.Setup(monsterOrName, levelOrName)
 
     --Assign monster's stat-altering Moods & Persistent Injuries
 --    local replacedMoods = Util.ReplaceStarWithLevel(monster.moods, level) or {}
-    Monster.SetMoods(Showdown.ReplaceStarWithLevel(monster.moods, level.level) or {})
+    Monster.SetMoods(Showdown.ReplaceStarWithLevel(monster.moods or {}, level.level or 0))
 --    local replacedInjuries = Util.ReplaceStarWithLevel(monster.injuries, level) or {}
-    Monster.SetInjuries(Showdown.ReplaceStarWithLevel(monster.injuries, level.level) or {})
+    Monster.SetInjuries(Showdown.ReplaceStarWithLevel(monster.injuries or {}, level.level or 0))
 
     local showdownSetup = level.showdown
     assert(Check(showdownSetup, "No showdown setup for %s, %s", monster.name, level.name))
@@ -817,7 +817,7 @@ end
 function Showdown.ReplaceStarWithLevel(cards, level)
     assert(Check.Num(level))
     local copy = {}
-    for k, v in pairs(cards) do
+    for k, v in pairs(cards) do  --Error Message here
         local innerCopy = {}
         for ik, iv in pairs(v) do
             if (not Check.Num(iv)) then

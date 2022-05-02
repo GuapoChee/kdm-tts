@@ -111,7 +111,7 @@ return {
     },
 
     timelineEvents = {
-        { year = 2, name = "Hollow Grave", type = "RulebookEvent" },
+        { year = 2, name = "Hollow Grave", type = "RulebookEvent", notCampaign = "People of the Stone" },
     },
 
     minions = {

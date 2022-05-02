@@ -30,6 +30,10 @@ return {
 
     replaceNemesis = { nemesis = "Watcher", replacement = "Allison Watcher" },
 
+    timelineEvents = {
+        { year = 6, name = "Allison Hooded Knight", type = "RulebookEvent" },
+    },
+
     terrain = {
         ["Mineral Vein"] = { terrainTile = "Mineral Vein", count = 1 },
     },
