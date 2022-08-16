@@ -14,7 +14,8 @@ return {
         ["Innovations"] = "Gore Farming",
         ["Strange Resources"] = "Gore Silk",
         ["Bookmarks"] = "CCG Bookmarks",
-
+        ["Terrain"] = "CCG Terrain",
+        ["Terrain Tiles"] = { "Crystal Corpse", "Diseased Corpse" },
         ["Secret Fighting Arts"] = "Black Guard Style",
     },
 
